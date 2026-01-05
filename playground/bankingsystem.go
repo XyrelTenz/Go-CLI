@@ -1,4 +1,5 @@
-package main
+// Package playground
+package playground
 
 import (
 	"bufio"

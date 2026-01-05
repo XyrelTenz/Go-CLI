@@ -10,8 +10,8 @@ type Player struct {
 	Potions int
 }
 
-//TODO: TakeDamage
-//TODO: DrinkPotion
+//TODO: Create Monster
+//TODO: Loop Choices
 
 func TakeDamage(p *Player, amount int) {
 

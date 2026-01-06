@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"golangapp/playground"
+	p "golangapp/playground"
 	"golangapp/pointers"
 )
 
@@ -81,7 +81,7 @@ func main() {
 	fmt.Println(StudentInfo)
 
 	pointers.BasicPointer()
-	playground.Hero()
+	p.Hero()
 
 }
 

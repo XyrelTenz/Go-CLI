@@ -3,15 +3,24 @@ package playground
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
+	"time"
 )
 
+//TODO: Add Inventory
+//TODO: Add Random Enemies
+//TODO: Store
+//TODO: Add Items from Inventory
+
 type Player struct {
-	Name    string
-	HP      int
-	MaxHP   int
-	Potions int
-	Damage  int
+	Name      string
+	HP        int
+	MaxHP     int
+	Gold      int
+	Potions   int
+	Inventory []Product
+	Damage    int
 }
 
 type Enemy struct {
@@ -19,10 +28,20 @@ type Enemy struct {
 	HP     int
 	MaxHP  int
 	Damage int
+	Exp    int
 }
 
-//TODO: Create Monster
-//TODO: Loop Choices
+type Product struct {
+	Name   string
+	Price  int
+	Type   string
+	Effect int
+}
+
+type Stores struct {
+	Name     string
+	Products []Product
+}
 
 func TakeDamage(p *Player, amount int) {
 
@@ -62,7 +81,8 @@ func DrinkPotion(p *Player) {
 }
 
 // LoadingScreen UI
-func LoadingScreen(p *Player) {
+// TODO: Implement STORE
+func LoadingScreen(p *Player, s Stores) {
 
 	for {
 		fmt.Println("1. Go Adventure")
@@ -102,6 +122,65 @@ func LoadingScreen(p *Player) {
 		}
 	}
 
+}
+
+func Inventory(p *Player) {
+
+}
+
+func Store(p *Player, s Stores) {
+
+	for {
+
+		fmt.Printf("Welcome %s", p.Name)
+		fmt.Printf("Your Gold is %d", p.Gold)
+
+		for i, item := range s.Products {
+			fmt.Printf("%d, %s - %d Gold", i+1, item.Name, item.Price)
+		}
+
+		fmt.Println("0. Exit Shop")
+
+		fmt.Print("Buy Item ID: ")
+		var choice int
+
+		_, err := fmt.Scanln(&choice)
+
+		if err != nil {
+			fmt.Println("Please input Valid Operations")
+		}
+
+		if choice == 0 {
+			return
+		}
+
+		index := choice - 1
+
+		if index >= 0 && index < len(s.Products) {
+
+			targetItem := s.Products[index]
+
+			if p.Gold >= targetItem.Price {
+				p.Gold -= targetItem.Price
+
+				p.Inventory = append(p.Inventory, targetItem)
+
+				fmt.Printf("You bought %s \n", targetItem.Name)
+
+			} else {
+
+				fmt.Println("Not enough Gold")
+			}
+		}
+
+	}
+
+}
+
+// TODO:
+func OpenInventory(p *Player) {
+
+	item := p.Inventory
 }
 
 func Adventure(p *Player) {
@@ -191,6 +270,8 @@ func Settings(p *Player) {
 }
 
 func Hero() {
+
+	rand.Seed(time.Now().UnixNano())
 	hero := &Player{
 		Name:    "Xyrel",
 		HP:      75,
@@ -199,6 +280,15 @@ func Hero() {
 		Damage:  15,
 	}
 
-	LoadingScreen(hero)
+	generalStore := Stores{
+		Name: "Town Market",
+		Products: []Product{
+			{Name: "Small Potion", Price: 20, Type: "Consumable", Effect: 20},
+			{Name: "Mega Potion", Price: 50, Type: "Consumable", Effect: 100},
+			{Name: "Iron Dagger", Price: 100, Type: "Weapon", Effect: 5},
+			{Name: "Steel Sword", Price: 250, Type: "Weapon", Effect: 15},
+		},
+	}
+	LoadingScreen(hero, generalStore)
 
 }

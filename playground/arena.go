@@ -273,6 +273,7 @@ func Settings(p *Player) {
 		fmt.Println("1. Change Name")
 		fmt.Println("2. View Full Stats")
 		fmt.Println("3. Back to Menu")
+		fmt.Println("4. Store")
 		fmt.Print("Select: ")
 
 		var choice int

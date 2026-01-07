@@ -181,18 +181,26 @@ func Store(p *Player, s Stores) {
 func OpenInventory(p *Player) {
 
 	item := p.Inventory
+
+	fmt.Print(item)
 }
 
+// TODO: Adventure
 func Adventure(p *Player) {
 
-	enemy := &Enemy{
-		Name:   "Goblin",
-		HP:     100,
-		MaxHP:  1000,
-		Damage: 20,
+	enemy := []Enemy{
+		{Name: "Goblin", HP: 50, MaxHP: 50, Damage: 10},
+		{Name: "Orc", HP: 100, MaxHP: 100, Damage: 20},
+		{Name: "Dragon", HP: 300, MaxHP: 300, Damage: 50},
 	}
 
-	fmt.Printf("You've Encounter An %s", enemy.Name)
+	// Randomize Enemy
+	RandomEnemy := rand.Intn(len(enemy))
+
+	// Read the Memoery of enemy and get its Value
+	enemies := &enemy[RandomEnemy]
+
+	fmt.Printf("You've Encounter An %s", enemies.Name)
 
 	for {
 
@@ -200,12 +208,29 @@ func Adventure(p *Player) {
 			fmt.Println(" You're Dead ")
 		}
 
-		if enemy.HP <= 0 {
-			enemy.HP = 0
-			fmt.Printf("You defeated the %s", enemy.Name)
+		if enemies.HP <= 0 {
+			enemies.HP = 0
+			fmt.Printf("You defeated the %s", enemies.Name)
 		}
 
-		fmt.Printf("\n[%s HP: %d] vs [%s HP: %d]\n", p.Name, p.HP, enemy.Name, enemy.HP)
+		// Exit Screen if Dead
+		if p.HP <= 0 {
+			p.HP = 0
+			fmt.Println("Return to Spawn Point")
+			return
+		}
+
+		// Logic for repeating adventure after previous enemy is defated then randomize new enemy encounter
+		if enemies.HP <= 0 {
+
+			enemies = &enemy[rand.Intn(len(enemy))]
+
+			fmt.Printf("You've Encounter An %s \n", enemies.Name)
+
+			return
+		}
+
+		fmt.Printf("\n[%s HP: %d] vs [%s HP: %d]\n", p.Name, p.HP, enemies.Name, enemies.HP)
 
 		fmt.Println("1. Attack")
 		fmt.Println("2. Drink Potion")
@@ -227,9 +252,9 @@ func Adventure(p *Player) {
 
 		switch action {
 		case 1:
-			fmt.Printf("You hit the %s for %d damage!\n", enemy.Name, p.Damage)
-			enemy.HP -= p.Damage
-			p.HP -= enemy.Damage
+			fmt.Printf("You hit the %s for %d damage!\n", enemies.Name, p.Damage)
+			enemies.HP -= p.Damage
+			p.HP -= enemies.Damage
 		case 2:
 			DrinkPotion(p)
 		case 3:
@@ -271,7 +296,7 @@ func Settings(p *Player) {
 
 func Hero() {
 
-	rand.Seed(time.Now().UnixNano())
+	rand.New(rand.NewSource(time.Now().UnixNano()))
 	hero := &Player{
 		Name:    "Xyrel",
 		HP:      75,

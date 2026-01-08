@@ -28,7 +28,7 @@ func (g *Gcash) Pay(amount int) {
 
 	fmt.Println("Paid with Gcash")
 	fmt.Printf("Phone Number: %d\n", g.PhoneNumber)
-	fmt.Printf("Total: %d", amount)
+	fmt.Printf("Total: %d \n", amount)
 
 }
 
@@ -36,20 +36,36 @@ func (m *Maya) Pay(amount int) {
 
 	fmt.Println("Paid with Maya")
 	fmt.Printf("Account Number: %d\n", m.AccountNumber)
-	fmt.Printf("Total: %d", amount)
+	fmt.Printf("Total: %d \n", amount)
 
 }
 
 func (c *Cash) Pay(amount int) {
 
 	fmt.Println("Paid with Cash")
-	fmt.Printf("Total: %d", amount)
+	fmt.Printf("Total: %d \n", amount)
 
 }
 
 func PaymentProcess(method Utils, amount int) {
 
 	method.Pay(amount)
+}
+
+func Fibonacci() func() int {
+
+	a, b := 0, 1
+
+	return func() int {
+
+		current := a
+
+		a, b = b, a+b
+
+		return current
+
+	}
+
 }
 
 func main() {
@@ -71,6 +87,14 @@ func main() {
 	PaymentProcess(maya, 100)
 	PaymentProcess(gcash, 100)
 	PaymentProcess(cash, 100)
+
+	nextFib := Fibonacci()
+
+	fmt.Println(nextFib())
+	fmt.Println(nextFib())
+	fmt.Println(nextFib())
+	fmt.Println(nextFib())
+	fmt.Println(nextFib())
 
 }
 

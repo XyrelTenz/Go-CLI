@@ -4,84 +4,73 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-
-	p "golangapp/playground"
-	"golangapp/pointers"
 )
 
-//TODO: 1. Learn About Pointers and References
-//TODO: 2. Learn About Arrays and Maps
-//TODO: 3. Learn About Garoutines
-//TODO: 4. Learn How to Manipulate Function and Struct
-//TODO: 5. Learn Struct types
+//TODO: 1. Learn About Garoutines
+//TODO: 2. Learn How to Manipulate Function and Struct
+//TODO: 3. Learn Struct types
+
+type Utils interface {
+	Pay(amount int)
+}
+
+type Gcash struct {
+	PhoneNumber int
+}
+
+type Maya struct {
+	AccountNumber int
+}
+
+type Cash struct{}
+
+func (g *Gcash) Pay(amount int) {
+
+	fmt.Println("Paid with Gcash")
+	fmt.Printf("Phone Number: %d\n", g.PhoneNumber)
+	fmt.Printf("Total: %d", amount)
+
+}
+
+func (m *Maya) Pay(amount int) {
+
+	fmt.Println("Paid with Maya")
+	fmt.Printf("Account Number: %d\n", m.AccountNumber)
+	fmt.Printf("Total: %d", amount)
+
+}
+
+func (c *Cash) Pay(amount int) {
+
+	fmt.Println("Paid with Cash")
+	fmt.Printf("Total: %d", amount)
+
+}
+
+func PaymentProcess(method Utils, amount int) {
+
+	method.Pay(amount)
+}
 
 func main() {
-	// Variable and Declarations
-	var name string = "Xyrel"
-	// Shorthand
-	name2 := "Xyrel2"
+	// pointers.BasicPointer()
+	// p.Hero()
 
-	// Types Int and Value
-	var age uint8 = 255
-	var age2 uint32 = 1000
-	var age3 uint64 = 200000
+	maya := &Maya{
 
-	// Types Float and Value
-	var floatAge float32 = 10.99999
-	var floatAge2 float64 = 10.999999
-
-	// Boolean Expression
-	isAdult := false
-	isMinor := true
-
-	fmt.Println(name)
-	fmt.Println(name2)
-
-	fmt.Println(age)
-	fmt.Println(age2)
-	fmt.Println(age3)
-
-	fmt.Println(floatAge)
-	fmt.Println(floatAge2)
-
-	fmt.Println(isAdult)
-	fmt.Println(isMinor)
-
-	// Student Info
-	// StudentInfo()
-
-	// BankingSystem
-	// LoginSystem()
-
-	// Pointer and References
-	ages := 19
-
-	ptr := &ages
-
-	fmt.Printf("Value: %v \n", *ptr)
-
-	// Array
-	// ... meaning can accept of any length of an Array
-	fruits := [...]string{
-		"Apple",
-		"Mango",
-		"Papaya",
+		AccountNumber: 400,
 	}
 
-	fmt.Println(fruits)
-	fmt.Println(len(fruits))
+	gcash := &Gcash{
 
-	fmt.Print(name)
-
-	StudentInfo := &Person{
-		StudentName: "Xyrel",
-		StudentAge:  19,
+		PhoneNumber: 12345678910,
 	}
 
-	fmt.Println(StudentInfo)
+	cash := &Cash{}
 
-	pointers.BasicPointer()
-	p.Hero()
+	PaymentProcess(maya, 100)
+	PaymentProcess(gcash, 100)
+	PaymentProcess(cash, 100)
 
 }
 

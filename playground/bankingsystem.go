@@ -7,6 +7,8 @@ import (
 	"os"
 )
 
+//TODO: Refactor This and Apply What I've been learn such as Closure, Inteface, Pointers, Comma OK
+
 var (
 	name string = "Xyrel"
 	age  int    = 18

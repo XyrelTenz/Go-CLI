@@ -4,6 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+
+	p "golangapp/playground"
 )
 
 //TODO: 1. Learn About Garoutines
@@ -72,29 +74,31 @@ func main() {
 	// pointers.BasicPointer()
 	// p.Hero()
 
-	maya := &Maya{
+	// maya := &Maya{
+	//
+	// 	AccountNumber: 400,
+	// }
+	//
+	// gcash := &Gcash{
+	//
+	// 	PhoneNumber: 12345678910,
+	// }
+	//
+	// cash := &Cash{}
+	//
+	// PaymentProcess(maya, 100)
+	// PaymentProcess(gcash, 100)
+	// PaymentProcess(cash, 100)
+	//
+	// nextFib := Fibonacci()
+	//
+	// fmt.Println(nextFib())
+	// fmt.Println(nextFib())
+	// fmt.Println(nextFib())
+	// fmt.Println(nextFib())
+	// fmt.Println(nextFib())
 
-		AccountNumber: 400,
-	}
-
-	gcash := &Gcash{
-
-		PhoneNumber: 12345678910,
-	}
-
-	cash := &Cash{}
-
-	PaymentProcess(maya, 100)
-	PaymentProcess(gcash, 100)
-	PaymentProcess(cash, 100)
-
-	nextFib := Fibonacci()
-
-	fmt.Println(nextFib())
-	fmt.Println(nextFib())
-	fmt.Println(nextFib())
-	fmt.Println(nextFib())
-	fmt.Println(nextFib())
+	p.Login()
 
 }
 

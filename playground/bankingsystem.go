@@ -19,20 +19,129 @@ type Util interface {
 	Authentication(Pin int, AccountNumber int)
 }
 
+var (
+	amount int
+)
+
 func Withdraw(b *Accounts) {
 
-	fmt.Println("Withdraw")
+	for {
+
+		fmt.Println("1. Withdraw")
+		fmt.Println("2. Back")
+
+		var choices int
+
+		_, err := fmt.Scanln(&choices)
+
+		if err != nil {
+
+			panic(err)
+
+		}
+
+		switch choices {
+
+		case 1:
+			fmt.Print("Enter Ammount to Withdraw: ")
+			_, err := fmt.Scanln(&amount)
+
+			if err != nil {
+				panic(err)
+
+			}
+
+			if b.Balance < amount {
+				fmt.Println("Insufficient Balance")
+			}
+
+			b.Balance -= amount
+
+			fmt.Println("Successfully Withdraw a Money")
+			fmt.Printf("New Balance: %d \n", b.Balance)
+		case 2:
+			return
+		default:
+			fmt.Println("Invalid Operations")
+
+		}
+
+	}
 
 }
 
 func Deposit(b *Accounts) {
 
-	fmt.Println("Deposit")
+	for {
+
+		fmt.Println("1. Deposit Money")
+		fmt.Println("2. Back")
+
+		var choices int
+
+		fmt.Print("Operation: ")
+		_, err := fmt.Scanln(&choices)
+
+		if err != nil {
+			panic(err)
+		}
+
+		switch choices {
+
+		case 1:
+			fmt.Print("Enter Amount to Deposit: ")
+
+			_, err := fmt.Scanln(&amount)
+
+			if err != nil {
+				panic(err)
+
+			}
+
+			b.Balance += amount
+
+			fmt.Println("Deposit Successful")
+			fmt.Printf("New Balance: %d \n", b.Balance)
+		case 2:
+			return
+
+		default:
+
+			fmt.Println("Invalid Operations")
+
+		}
+
+	}
 }
 
 func CheckBalance(b *Accounts) {
 
-	fmt.Printf("Your Balance is: %d \n", b.Balance)
+	for {
+
+		fmt.Printf("Your Balance is: %d \n", b.Balance)
+		fmt.Println("1. Back")
+
+		var choices int
+
+		fmt.Print("Operation: ")
+		_, err := fmt.Scanln(&choices)
+
+		if err != nil {
+
+			panic(err)
+
+		}
+
+		switch choices {
+
+		case 1:
+			return
+
+		default:
+			fmt.Println("Invalid Operations")
+
+		}
+	}
 }
 
 var (

@@ -99,7 +99,8 @@ func main() {
 	// fmt.Println(nextFib())
 
 	// p.Login()
-	c.Anonymous()
+	// c.Anonymous()
+	c.Channels()
 
 }
 

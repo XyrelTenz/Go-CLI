@@ -30,4 +30,45 @@ func Channels() {
 
 	fmt.Println(x, y, x+y)
 
+	animal := make(chan string)
+	human := make(chan string)
+
+	go func() {
+
+		msg := <-animal
+		fmt.Println("Animals: ", msg)
+
+	}()
+
+	go func() {
+
+		msg := <-human
+		fmt.Println("Human: ", msg)
+
+	}()
+
+	behavior := []string{
+
+		"Fly",
+		"Run",
+	}
+
+	for _, v := range behavior {
+
+		if v == "Fly" {
+
+			animal <- "Animals is Flying"
+
+		}
+
+		if v == "Run" {
+
+			human <- "Human is Running"
+
+		}
+
+	}
+
+	fmt.Scanln()
+
 }

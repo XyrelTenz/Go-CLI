@@ -38,13 +38,26 @@ func RunConcurrency() {
 
 func Anonymous() {
 
-	number := 5
-	go func() {
-		number++
-		fmt.Println("Increase")
+	// number := 5
+	// go func() {
+	// 	number++
+	// 	fmt.Println("Increase")
+	//
+	// }()
+	//
+	// fmt.Println(string(number))
+	//
 
-	}()
+	go Say("Hello")
+	Say("World")
+}
 
-	fmt.Println(string(number))
+func Say(name string) {
+
+	for i := 0; i < 5; i++ {
+		time.Sleep(100 * time.Millisecond)
+		fmt.Println(name)
+
+	}
 
 }

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	p "golangapp/playground"
+	c "golangapp/concurrency"
 )
 
 //TODO: 1. Learn About Garoutines
@@ -98,7 +98,8 @@ func main() {
 	// fmt.Println(nextFib())
 	// fmt.Println(nextFib())
 
-	p.Login()
+	// p.Login()
+	c.Anonymous()
 
 }
 

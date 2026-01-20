@@ -104,7 +104,7 @@ func main() {
 
 	// p.Lyrics()
 
-	fmt.Println(f.Variadic(123123, 413123, 5123123, 12312312, 3123))
+	f.CallTheValue()
 
 }
 

@@ -104,7 +104,7 @@ func main() {
 
 	// p.Lyrics()
 
-	i.MapIteration()
+	i.StringIterations()
 
 }
 

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	c "golangapp/concurrency"
+	i "golangapp/iterations"
 )
 
 //TODO: 1. Learn About Garoutines
@@ -104,7 +104,7 @@ func main() {
 
 	// p.Lyrics()
 
-	c.GoStatement()
+	i.MapIteration()
 
 }
 

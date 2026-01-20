@@ -2,8 +2,6 @@ package compositetypes
 
 import "fmt"
 
-//TODO: Learn about usecase of CommaOK
-
 func KeyChecker() {
 	scores := map[string]int{
 		"Alice": 95,

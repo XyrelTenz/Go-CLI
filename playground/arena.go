@@ -8,11 +8,6 @@ import (
 	"time"
 )
 
-//TODO: Add Inventory
-//TODO: Add Random Enemies
-//TODO: Store
-//TODO: Add Items from Inventory
-
 type Player struct {
 	Name      string
 	HP        int
@@ -81,7 +76,6 @@ func DrinkPotion(p *Player) {
 }
 
 // LoadingScreen UI
-// TODO: Implement STORE
 func LoadingScreen(p *Player, s Stores) {
 
 	for {
@@ -177,7 +171,6 @@ func Store(p *Player, s Stores) {
 
 }
 
-// TODO:
 func OpenInventory(p *Player) {
 
 	item := p.Inventory
@@ -185,7 +178,6 @@ func OpenInventory(p *Player) {
 	fmt.Print(item)
 }
 
-// TODO: Adventure
 func Adventure(p *Player) {
 
 	enemy := []Enemy{

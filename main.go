@@ -8,10 +8,6 @@ import (
 	f "golangapp/functions"
 )
 
-//TODO: 1. Learn About Garoutines
-//TODO: 2. Learn How to Manipulate Function and Struct
-//TODO: 3. Learn Struct types
-
 type Utils interface {
 	Pay(amount int)
 }

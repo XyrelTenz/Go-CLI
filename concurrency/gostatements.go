@@ -13,7 +13,7 @@ func GoStatement() {
 
 		time.Sleep(1 * time.Millisecond)
 
-		message <- "Testing"
+		message <- "Hello World"
 
 	}(message)
 

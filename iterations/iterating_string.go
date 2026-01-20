@@ -47,7 +47,11 @@ func StringIterations() {
 
 	fmt.Println()
 
-	fmt.Printf("Word Count: %d", countWords(text))
+	fmt.Printf("Word Count: %d \n", countWords(text))
+
+	fmt.Println(transformString(text))
+
+	fmt.Println(isValidEmail("@yahoo.com"))
 
 }
 
@@ -100,4 +104,33 @@ func transformString(input string) string {
 	}
 
 	return result.String()
+}
+
+func isValidEmail(email string) bool {
+	if strings.Count(email, "@") != 1 {
+		return false
+	}
+
+	parts := strings.Split(email, "@")
+	username := parts[0]
+	domain := parts[1]
+
+	if len(username) == 0 || len(domain) == 0 {
+		return false
+	}
+
+	if !strings.Contains(domain, ".") {
+		return false
+	}
+
+	if !strings.Contains(domain, ".") {
+		return false
+	}
+
+	lastDotIndex := strings.LastIndex(domain, ".")
+	if lastDotIndex == len(domain)-1 {
+		return false
+	}
+
+	return true
 }

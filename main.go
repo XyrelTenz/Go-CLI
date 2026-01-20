@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	i "golangapp/iterations"
+	f "golangapp/functions"
 )
 
 //TODO: 1. Learn About Garoutines
@@ -104,7 +104,7 @@ func main() {
 
 	// p.Lyrics()
 
-	i.StringIterations()
+	fmt.Println(f.Variadic(123123, 413123, 5123123, 12312312, 3123))
 
 }
 

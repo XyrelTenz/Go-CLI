@@ -21,3 +21,7 @@ func GoStatement() {
 
 	fmt.Println(msg)
 }
+
+func array() {
+
+}

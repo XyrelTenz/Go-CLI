@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	f "golangapp/functions"
+	p "golangapp/pointers"
 )
 
 type Utils interface {
@@ -100,7 +100,8 @@ func main() {
 
 	// p.Lyrics()
 
-	f.CallTheValue()
+	// f.CallTheValue()
+	p.MemoryManagement()
 
 }
 
